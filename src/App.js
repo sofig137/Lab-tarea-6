@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Switch from "./Switch";
 
 function App() {
+  const [modoOscuro, setModoOscuro] = useState(false);
+
+  const toggleModo = () => {
+    setModoOscuro(!modoOscuro);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={`pagina ${modoOscuro ? "oscuro" : "claro"}`}>
+      <Switch activarModo={toggleModo} modoOscuro={modoOscuro} />
+
+      <h1>🌼 Página de Prueba 🌙</h1>
+      <p>
+        Esta es una pequeña página creada con React :^)  
+        Aquí estoy probando cómo funciona el cambio entre modo claro y oscuro.
+      </p>
+
+      <div className="botones">
+        <button>Botón Lindo</button>
+        <button>Botón Bello</button>
+        <button>Botón Guapo</button>
+      </div>
     </div>
   );
 }
